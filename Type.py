@@ -41,9 +41,6 @@ def start_typing(url: str, xpath_to_text_field: str, message: str, type_speed: i
     driver = webdriver.Chrome()
     driver.get(url)
     driver.maximize_window()
-
-    recorder = Recorder(width = 1440, height = 810)
-    recorder.start()
     
     time.sleep(1)
 
@@ -60,12 +57,14 @@ def start_typing(url: str, xpath_to_text_field: str, message: str, type_speed: i
     text_field.send_keys(Keys.ENTER)
 
     time.sleep(7.5)
-    recorder.stop()
     driver.close()
 
 
 
 if __name__ == '__main__':
+
+    recorder = Recorder(width = 1440, height = 810)
+    recorder.start()
 
     message = input("Enter the text you want to type: ")
 
@@ -76,3 +75,4 @@ if __name__ == '__main__':
     xpath_to_text_field = '/html[1]/body[1]/div[1]/div[3]/form[1]/div[1]/div[1]/div[1]/div[2]/div[2]/input[1]'
 
     start_typing(url, xpath_to_text_field, message, type_speed)
+    recorder.stop()
